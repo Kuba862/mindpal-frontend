@@ -1,0 +1,70 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main .no-notes-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 52.21px;
+  height: 52.21px;
+  border-radius: 50%;
+  margin: 50px 0;
+}
+
+main .no-notes-icon {
+  font-size: 100px;
+  background-color: black;
+  width: 24px;
+  height: 24px;
+}
+
+main .no-notes-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 303px;
+  margin-bottom: 25px;
+}
+
+main .no-notes-info p {
+  text-align: center;
+}
+
+main .no-notes-info p:first-child {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #1b1c1e;
+}
+
+main .no-notes-info p:last-child {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25.6px;
+  color: #3b3c3e;
+}
+
+main #add-new-note-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: var(--button-secondary-hover-border);
+  background-color: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+main #add-new-note-btn:hover {
+  background-color: var(--button-secondary-hover-bg-color);
+}
+
+main #add-new-note-btn:active {
+  background-color: var(--button-secondary-active-bg-color);
+}

@@ -1,0 +1,39 @@
+:root {
+    /* Button Colors */
+    --button-primary-bg-color: #6B3C9B;
+    --button-primary-hover-bg-color: #844DBA;
+    --button-primary-active-bg-color: #5B2F87;
+    --button-secondary-default-bg-color: #ffffff;
+    --button-secondary-hover-bg-color: #E7E7E7;
+    --button-secondary-active-bg-color: #BDBDBD;
+    --button-secondary-default-border: 1px solid #BCBCBD;
+    --button-secondary-hover-border: 1px solid #BCBCBD;
+    --button-secondary-active-border: 1px solid #BDBDBD;
+    --button-border-radius: 12px;
+    /* Input Colors */
+    --input-default-bg: #EEEFF0;
+    --input-default-hover-bg: #DCDEE0;
+    --input-default-color: #5B5C5E;
+    --input-default-active-border: 1px solid #1B1C1E;
+    /* Text Colors */
+    --text-cancel-color: #0F75B8;
+    --text-cancel-hover-color: #0F75B8;
+    --text-black-color: #1B1C1E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    max-width: 600px;
+    margin: 0 auto;
+  }

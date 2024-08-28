@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 4px;
+    gap: 10px;
+}
+header img {
+    width: 30px;
+    height: 30px;
+}
+
+header p {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--text-black-color);
+}
