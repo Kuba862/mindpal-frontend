@@ -1,0 +1,62 @@
+.new-note-title {
+    border: none;
+    background-color: var(--input-default-bg);
+    font-size: 16px;
+    line-height: 25.6px;
+    color: var(--text-black-color);
+    width: 90%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    outline: none;
+    transition: .2s ease-in-out;
+}
+
+.new-note-title::placeholder {
+    color: var(--text-black-color);
+}
+
+.new-note-title:hover {
+    background-color: var(--input-default-hover-bg);
+}
+
+.new-note-title:focus {
+    border: var(--input-default-active-border);
+    background-color: white;
+}
+
+.new-note-content {
+    border: none;
+    background-color: var(--input-default-bg);
+    font-size: 16px;
+    line-height: 25.6px;
+    color: var(--text-black-color);
+    width: 90%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    outline: none;
+    transition: .2s ease-in-out;
+}
+
+.new-note-content:hover {
+    background-color: var(--input-default-hover-bg);
+}
+
+.new-note-content:focus {
+    border: var(--input-default-active-border);
+    background-color: white;
+}
+
+.save-note {
+    color: var(--button-primary-bg-color);
+    font-size: 16px;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+}
+
+.save-note:hover {
+    color: var(--button-primary-hover-bg-color);
+}
+
+.save-note:active {
+    color: var(--button-primary-active-bg-color);
+}
