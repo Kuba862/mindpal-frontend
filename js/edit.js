@@ -1,6 +1,6 @@
 import { editSVG } from './utils.js';
 import { updateNote } from './notes.js';
- 
+
 export const editNote = (e) => {
   const noteElement = e.target.closest('.note-from-db');
   const titleElement = noteElement.querySelector('.note-title');
@@ -26,12 +26,12 @@ export const editNote = (e) => {
     newTitleElement.classList.add('note-title');
     newTitleElement.textContent = titleInput.value;
     titleInput.replaceWith(newTitleElement);
-  
+
     const newContentElement = document.createElement('p');
     newContentElement.classList.add('note-content');
     newContentElement.textContent = contentInput.value;
     contentInput.replaceWith(newContentElement);
-  
+
     editButton.innerHTML = editSVG;
     updateNote(noteElement.dataset.key, titleInput.value, contentInput.value);
   });

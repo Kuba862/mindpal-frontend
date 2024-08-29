@@ -15,7 +15,8 @@ export const cancelNewNoteUtil = () => {
   newNoteSection.classList.add(hiddenClass);
   main.classList.remove(hiddenClass);
   const notes = fetchAllNotes();
-  if (notes) {
+  console.log(notes.length)
+  if (!notes) {
     main.classList.add(hiddenClass);
   }
 };
@@ -31,10 +32,8 @@ const deleteSVG = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" x
 export const showNotes = (notes) => {
   const notesContainer = document.getElementById('notes-list');
   notesContainer.innerHTML = '';
-
-  notes.sort((a, b) => new Date(b.date) - new Date(a.date));
   
-  notes.forEach((note) => {
+  notes.map((note) => {
     const noteElement = document.createElement('li');
     noteElement.classList.add('note-from-db');
     noteElement.dataset.key = note._id;
@@ -81,5 +80,6 @@ export const showNotes = (notes) => {
     noteElement.appendChild(dateElement);
 
     notesContainer.appendChild(noteElement);
-  });
+    return noteElement;
+  }).forEach(noteElement => notesContainer.appendChild(noteElement));
 };
