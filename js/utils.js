@@ -1,4 +1,5 @@
 import { fetchAllNotes } from './search.js';
+import { deleteNote } from './delete.js';
 
 const main = document.getElementById('main-container');
 const newNoteSection = document.getElementById('new-note-creator');
@@ -15,7 +16,7 @@ export const cancelNewNoteUtil = () => {
   newNoteSection.classList.add(hiddenClass);
   main.classList.remove(hiddenClass);
   const notes = fetchAllNotes();
-  console.log(notes.length)
+  console.log(notes.length);
   if (!notes) {
     main.classList.add(hiddenClass);
   }
@@ -32,54 +33,107 @@ const deleteSVG = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" x
 export const showNotes = (notes) => {
   const notesContainer = document.getElementById('notes-list');
   notesContainer.innerHTML = '';
-  
-  notes.map((note) => {
-    const noteElement = document.createElement('li');
-    noteElement.classList.add('note-from-db');
-    noteElement.dataset.key = note._id;
 
-    const titleContainer = document.createElement('div');
-    titleContainer.classList.add('title-container');
+  notes
+    .map((note) => {
+      const noteElement = document.createElement('li');
+      noteElement.classList.add('note-from-db');
+      noteElement.dataset.key = note._id;
 
-    const titleElement = document.createElement('p');
-    titleElement.classList.add('note-title');
-    titleElement.textContent = note.title;
+      const titleContainer = document.createElement('div');
+      titleContainer.classList.add('title-container');
 
-    const iconsContainer = document.createElement('div');
-    iconsContainer.classList.add('note-icons');
+      const titleElement = document.createElement('p');
+      titleElement.classList.add('note-title');
+      titleElement.textContent = note.title;
 
-    const editElement = document.createElement('div');
-    editElement.classList.add('edit-note');
-    editElement.innerHTML = editSVG;
+      const iconsContainer = document.createElement('div');
+      iconsContainer.classList.add('note-icons');
 
-    const deleteElement = document.createElement('div');
-    deleteElement.classList.add('delete-note');
-    deleteElement.innerHTML = deleteSVG;
+      const editElement = document.createElement('div');
+      editElement.classList.add('edit-note');
+      editElement.innerHTML = editSVG;
 
-    iconsContainer.appendChild(editElement);
-    iconsContainer.appendChild(deleteElement);
+      const deleteElement = document.createElement('div');
+      deleteElement.classList.add('delete-note');
+      deleteElement.innerHTML = deleteSVG;
 
-    titleContainer.appendChild(titleElement);
-    titleContainer.appendChild(iconsContainer);
+      iconsContainer.appendChild(editElement);
+      iconsContainer.appendChild(deleteElement);
 
-    const contentElement = document.createElement('p');
-    contentElement.classList.add('note-content');
-    contentElement.textContent = note.content;
+      titleContainer.appendChild(titleElement);
+      titleContainer.appendChild(iconsContainer);
 
-    const dateElement = document.createElement('p');
-    dateElement.classList.add('note-date');
-    const date = new Date(note.date);
-    const formattedDate = date.toLocaleDateString('en-US', {
-      month: 'short',
-      day: '2-digit',
-    });
-    dateElement.textContent = formattedDate;
+      const contentElement = document.createElement('p');
+      contentElement.classList.add('note-content');
+      contentElement.textContent = note.content;
 
-    noteElement.appendChild(titleContainer);
-    noteElement.appendChild(contentElement);
-    noteElement.appendChild(dateElement);
+      const dateElement = document.createElement('p');
+      dateElement.classList.add('note-date');
+      const date = new Date(note.date);
+      const formattedDate = date.toLocaleDateString('en-US', {
+        month: 'short',
+        day: '2-digit',
+      });
+      dateElement.textContent = formattedDate;
 
-    notesContainer.appendChild(noteElement);
-    return noteElement;
-  }).forEach(noteElement => notesContainer.appendChild(noteElement));
+      noteElement.appendChild(titleContainer);
+      noteElement.appendChild(contentElement);
+      noteElement.appendChild(dateElement);
+
+      notesContainer.appendChild(noteElement);
+      return noteElement;
+    })
+    .forEach((noteElement) => notesContainer.appendChild(noteElement));
+};
+
+export const showDeletePopup = () => {
+  const popupContainer = document.createElement('div');
+  popupContainer.classList.add('delete-popup-container');
+
+  const popupTitle = document.createElement('h2');
+  popupTitle.classList.add('delete-popup-title');
+  popupTitle.textContent = 'Delete Note';
+
+  const popupContent = document.createElement('p');
+  popupContent.classList.add('delete-popup-content');
+  popupContent.textContent = 'Are you sure you want to delete this note?';
+
+  const cancelButton = document.createElement('button');
+  cancelButton.classList.add('cancel-delete');
+  cancelButton.addEventListener('click', () => {
+    popupDiv.remove();
+  });
+  cancelButton.textContent = 'Cancel';
+
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('confirm-delete');
+  deleteButton.id = 'confirm-delete';
+  deleteButton.addEventListener('click', (e) => {
+    const noteElement = document.querySelector('.note-from-db');
+    if (noteElement) {
+      deleteNote(noteElement.dataset.key);
+    }
+  });
+  deleteButton.textContent = 'Delete';
+
+  popupContainer.appendChild(popupTitle);
+  popupContainer.appendChild(popupContent);
+  popupContainer.appendChild(cancelButton);
+  popupContainer.appendChild(deleteButton);
+
+  const popupDiv = document.createElement('div');
+  popupDiv.classList.add('popup');
+  popupDiv.appendChild(popupContainer);
+
+  const popupButtons = document.createElement('div');
+  popupButtons.classList.add('popup-buttons');
+  popupButtons.appendChild(cancelButton);
+  popupButtons.appendChild(deleteButton);
+
+  popupContainer.appendChild(popupButtons);
+
+  document.body.appendChild(popupDiv);
+
+  document.body.appendChild(popupDiv);
 };
