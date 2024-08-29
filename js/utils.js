@@ -1,5 +1,4 @@
 import { fetchAllNotes } from './search.js';
-import { deleteNote } from './delete.js';
 
 const main = document.getElementById('main-container');
 const newNoteSection = document.getElementById('new-note-creator');
@@ -30,16 +29,16 @@ const deleteSVG = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" x
 <path d="M6.25 16.25H13.75V6.25H6.25V16.25ZM4.375 4.58333V3.33333H7.16667L8 2.5H12L12.8333 3.33333H15.625V4.58333H4.375ZM6.25 17.5C5.91667 17.5 5.625 17.375 5.375 17.125C5.125 16.875 5 16.5833 5 16.25V5H15V16.25C15 16.5833 14.875 16.875 14.625 17.125C14.375 17.375 14.0833 17.5 13.75 17.5H6.25ZM6.25 16.25H13.75H6.25Z" fill="#3B3C3E"/>
 </svg>`;
 
+// dynamic note creation - reason why I use DOMContentLoaded in app.js
 export const showNotes = (notes) => {
   const notesContainer = document.getElementById('notes-list');
   notesContainer.innerHTML = '';
 
-  notes
-    .map((note) => {
+  notes.map((note) => {
       const noteElement = document.createElement('li');
       noteElement.classList.add('note-from-db');
       noteElement.dataset.key = note._id;
-
+      noteElement.setAttribute('draggable', 'true');
       const titleContainer = document.createElement('div');
       titleContainer.classList.add('title-container');
 
@@ -82,11 +81,13 @@ export const showNotes = (notes) => {
       noteElement.appendChild(dateElement);
 
       notesContainer.appendChild(noteElement);
+
       return noteElement;
     })
     .forEach((noteElement) => notesContainer.appendChild(noteElement));
 };
 
+// dynamic delete popup creation - reason why I use DOMContentLoaded in app.js
 export const showDeletePopup = () => {
   const popupContainer = document.createElement('div');
   popupContainer.classList.add('delete-popup-container');
@@ -109,12 +110,6 @@ export const showDeletePopup = () => {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('confirm-delete');
   deleteButton.id = 'confirm-delete';
-  deleteButton.addEventListener('click', (e) => {
-    const noteElement = document.querySelector('.note-from-db');
-    if (noteElement) {
-      deleteNote(noteElement.dataset.key);
-    }
-  });
   deleteButton.textContent = 'Delete';
 
   popupContainer.appendChild(popupTitle);
