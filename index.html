@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/search.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/notes.css" />
+    <link rel="stylesheet" href="css/newNote.css" />
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
     </style>
@@ -23,7 +24,26 @@
       <img src="./assets/icons/search_icon.png" alt="search notes" />
       <input type="text" id="search-input" placeholder="Search notes..." />
     </div>
-    <main>
+    <section class="add-new-note hidden" id="new-note-creator">
+      <div class="new-note-header" >
+        <p>Add new note</p>
+        <button id="cancel-new-note">Cancel</button>
+      </div>
+      <div class="new-note-title-box">
+        <input type="text" id="new-note-title" class="new-note-title" placeholder="Untitled Note" />
+      </div>
+      <div class="new-note-content-box">
+        <textarea
+          id="new-note-content"
+          class="new-note-content"
+          cols="30"
+          rows="10"
+          placeholder="Your note..."
+        ></textarea>
+        <button id="save-new-note" class="save-new-note" >Add</button>
+      </div>
+    </section>
+    <main id="main-container" >
       <!-- nie renderuj jezeli są notatki -->
       <div class="no-notes-container">
       <svg
@@ -73,8 +93,8 @@
           <button id="save-new-note">Add</button>
         </div>
       </section> -->
-      <ul id="notes-list"></ul>
     </main>
+    <ul id="notes-list"></ul>
     <script type="module" src="js/app.js"></script>
   </body>
 </html>

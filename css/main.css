@@ -1,7 +1,10 @@
-main {
+main#main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+main#main-container.hidden {
+  display: none;
 }
 
 main .no-notes-container {

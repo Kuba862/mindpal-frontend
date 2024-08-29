@@ -1,0 +1,146 @@
+.add-new-note.hidden {
+    display: none;
+}
+
+.add-new-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 8px 12px;
+    margin-top: 50px;
+}
+
+.add-new-note .new-note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px 12px;
+}
+
+.add-new-note .new-note-header p {
+    font-size: 16px;
+    line-height: 25.6px;
+    color: var(--text-black-color);
+}
+
+.add-new-note .new-note-header button {
+    position: relative;
+    border: none;
+    background-color: transparent;
+    color: var(--text-cancel-color);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23.8px;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+}
+
+.add-new-note .new-note-header button:hover {
+    color: var(--text-cancel-hover-color);
+    font-weight: 500;
+}
+
+.add-new-note .new-note-header button::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text-cancel-hover-color);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.add-new-note .new-note-header button:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.add-new-note .new-note-title-box {
+    width: 100%;
+}
+
+.add-new-note .new-note-title-box .new-note-title {
+    border: none;
+    background-color: var(--input-default-bg);
+    font-size: 16px;
+    line-height: 25.6px;
+    color: var(--text-black-color);
+    width: 100%;        
+    padding: 8px 12px;
+    border-radius: 12px;
+    outline: none;
+    transition: .2s ease-in-out;
+}
+
+.add-new-note .new-note-title-box .new-note-title::placeholder {
+    color: var(--text-black-color);
+}
+
+.add-new-note .new-note-title-box .new-note-title:hover {
+    background-color: var(--input-default-hover-bg);
+}
+
+.add-new-note .new-note-title-box .new-note-title:focus {
+    border: var(--input-default-active-border);
+    background-color: white;
+}
+
+.add-new-note .new-note-content-box {
+    position: relative;
+    width: 100%;
+}
+
+.add-new-note .new-note-content-box .new-note-content {    
+    border: none;
+    background-color: var(--input-default-bg);
+    font-size: 16px;
+    line-height: 25.6px;
+    color: var(--text-black-color);
+    width: 100%;        
+    padding: 8px 12px;
+    border-radius: 12px;
+    outline: none;
+    transition: .2s ease-in-out;
+}
+
+.add-new-note .new-note-content-box .new-note-content:hover {
+    background-color: var(--input-default-hover-bg);
+}
+
+.add-new-note .new-note-content-box .new-note-content:focus {
+    border: var(--input-default-active-border);
+    background-color: white;
+}
+
+.add-new-note .new-note-content-box .save-new-note {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--button-primary-bg-color);
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+
+.add-new-note .new-note-content-box .save-new-note:hover {
+    background-color: var(--button-primary-hover-bg-color);
+}
+
+.add-new-note .new-note-content-box .save-new-note:active {
+    background-color: var(--button-primary-active-bg-color);
+}
