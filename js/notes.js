@@ -14,8 +14,12 @@ export const fetchAllNotes = async () => {
     }/api/notes/all-notes`);
     const data = await response.json();
 
-    data.length !== 0 ? addNewNote.classList.remove(hiddenClass) : mainContainer.classList.remove(hiddenClass);
-
+    if(data.length !== 0) {
+      addNewNote.classList.remove(hiddenClass);
+    } else {
+      mainContainer.classList.remove(hiddenClass);
+      addNewNote.classList.add(hiddenClass);
+    }
     return data;
   } catch (error) {
     console.error('Error fetching notes:', error);
