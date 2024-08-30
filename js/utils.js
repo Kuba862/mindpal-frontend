@@ -5,10 +5,16 @@ const newNoteSection = document.getElementById('new-note-creator');
 export const hiddenClass = 'hidden';
 const addNewTopButton = document.getElementById('add-new-note');
 
+const clearInputFields = () => {
+  document.getElementById('new-note-title').value = '';
+  document.getElementById('new-note-content').value = '';
+}
+
 export const addNewNoteUtil = () => {
   newNoteSection.classList.remove(hiddenClass);
   main.classList.add(hiddenClass);
   addNewTopButton.classList.add(hiddenClass);
+  clearInputFields();
 };
 
 export const cancelNewNoteUtil = () => {
@@ -18,6 +24,7 @@ export const cancelNewNoteUtil = () => {
   if (!notes) {
     main.classList.add(hiddenClass);
   }
+  clearInputFields();
 };
 
 export const editSVG = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,6 +45,7 @@ export const showNotes = (notes) => {
       noteElement.classList.add('note-from-db');
       noteElement.dataset.key = note._id;
       noteElement.setAttribute('draggable', 'true');
+      
       const titleContainer = document.createElement('div');
       titleContainer.classList.add('title-container');
 
