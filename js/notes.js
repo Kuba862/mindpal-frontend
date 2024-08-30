@@ -1,6 +1,9 @@
 import { editSVG } from './utils.js';
 
 export const fetchAllNotes = async () => {
+  const mainContainer = document.getElementById('main-container');
+  const addNewNote = document.getElementById('add-new-note');
+
   try {
     const response = await fetch(`${
       window.location.origin.includes('.onrender.com')
@@ -9,13 +12,7 @@ export const fetchAllNotes = async () => {
     }/api/notes/all-notes`);
     const data = await response.json();
 
-    const mainContainer = document.getElementById('main-container');
-    const addNewNote = document.getElementById('add-new-note');
-
-    if (data.length !== 0) {
-      mainContainer.classList.add('hidden');
-      addNewNote.classList.remove('hidden');
-    }
+    data.length !== 0 ? addNewNote.classList.remove('hidden') : mainContainer.classList.remove('hidden');
 
     return data;
   } catch (error) {
