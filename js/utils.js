@@ -18,7 +18,6 @@ export const addNewNoteUtil = () => {
 };
 
 export const cancelNewNoteUtil = () => {
-  addNewTopButton.classList.remove(hiddenClass);
   newNoteSection.classList.add(hiddenClass);
   main.classList.add(hiddenClass);
   const notes = fetchAllNotes();
