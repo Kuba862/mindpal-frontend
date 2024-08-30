@@ -1,7 +1,7 @@
-import { fetchAllNotes } from './search.js';
 import { addNewNoteUtil, cancelNewNoteUtil, showNotes, showDeletePopup } from './utils.js';
-import { addNewNote, deleteNote, editNote } from './notes.js';
+import { addNewNote, deleteNote, editNote, fetchAllNotes } from './notes.js';
 import { enableDragAndDrop } from './dragDrop.js';
+import { filterNotesByContent } from './search.js';
 
 let noteToDelete = null;
 
@@ -36,5 +36,11 @@ document.getElementById('notes-list').addEventListener('click', (e) => {
         noteToDelete = e.target.closest('.note-from-db');
         showDeletePopup();
       }
+    });
+
+    document.getElementById('search-input').addEventListener('input', async (e) => {
+      const notes = await fetchAllNotes();
+      const filteredNotes = filterNotesByContent(notes, e.target.value);
+      showNotes(filteredNotes);
     });
   });

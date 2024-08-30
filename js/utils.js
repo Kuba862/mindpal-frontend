@@ -1,4 +1,4 @@
-import { fetchAllNotes } from './search.js';
+import { fetchAllNotes } from './notes.js';
 
 const main = document.getElementById('main-container');
 const newNoteSection = document.getElementById('new-note-creator');
