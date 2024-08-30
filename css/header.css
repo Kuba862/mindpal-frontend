@@ -4,7 +4,9 @@ header {
     width: 100%;
     padding: 4px;
     gap: 10px;
+    margin-top: 15px;
 }
+
 header img {
     width: 30px;
     height: 30px;
@@ -15,4 +17,10 @@ header p {
     font-size: 20px;
     line-height: 30px;
     color: var(--text-black-color);
+}
+
+@media screen and (max-width: 425px) {
+    header {
+        margin: 10px;
+    }
 }

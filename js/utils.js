@@ -15,7 +15,6 @@ export const cancelNewNoteUtil = () => {
   newNoteSection.classList.add(hiddenClass);
   main.classList.remove(hiddenClass);
   const notes = fetchAllNotes();
-  console.log(notes.length);
   if (!notes) {
     main.classList.add(hiddenClass);
   }

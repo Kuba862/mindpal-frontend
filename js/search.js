@@ -1,4 +1,3 @@
-// fetch all notes
 export const fetchAllNotes = async () => {
   try {
     const response = await fetch('http://localhost:5001/api/notes/all-notes');
@@ -19,7 +18,6 @@ export const fetchAllNotes = async () => {
   }
 };
 
-// filter notes by content
 export const filterNotesByContent = (notes, searchQuery) => {
   const filteredNotes = notes.filter(note => {
     const noteContent = note.content.toLowerCase();

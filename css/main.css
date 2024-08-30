@@ -16,6 +16,7 @@ main .no-notes-container {
   height: 52.21px;
   border-radius: 50%;
   margin: 50px 0;
+  box-shadow: 0 0 0 4px var(--input-default-bg);
 }
 
 main .no-notes-icon {
@@ -56,10 +57,13 @@ main #add-new-note-btn {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
   padding: 8px 16px;
   border-radius: 12px;
   border: var(--button-secondary-hover-border);
-  background-color: white;
+  background-color: var(--text-white-color);
+  color: var(--text-black-color);
+  font-weight: 500;
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }

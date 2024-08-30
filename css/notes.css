@@ -83,3 +83,13 @@
 #add-new-note:active {
     background-color: var(--button-primary-active-bg-color);
 }
+
+@media screen and (max-width: 425px) {
+  #add-new-note {
+      width: 95%;
+  }
+
+  #notes-list {
+      width: 95%;
+  }
+}
