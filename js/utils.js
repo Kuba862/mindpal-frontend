@@ -3,7 +3,7 @@ import { fetchAllNotes } from './notes.js';
 const main = document.getElementById('main-container');
 const newNoteSection = document.getElementById('new-note-creator');
 export const hiddenClass = 'hidden';
-const addNewTopButton = document.getElementById('add-new-note');
+export const addNewTopButton = document.getElementById('add-new-note');
 
 const clearInputFields = () => {
   document.getElementById('new-note-title').value = '';
@@ -18,6 +18,7 @@ export const addNewNoteUtil = () => {
 };
 
 export const cancelNewNoteUtil = () => {
+  addNewTopButton.classList.remove(hiddenClass);
   newNoteSection.classList.add(hiddenClass);
   main.classList.add(hiddenClass);
   const notes = fetchAllNotes();
@@ -45,7 +46,7 @@ export const showNotes = (notes) => {
       noteElement.classList.add('note-from-db');
       noteElement.dataset.key = note._id;
       noteElement.setAttribute('draggable', 'true');
-      
+
       const titleContainer = document.createElement('div');
       titleContainer.classList.add('title-container');
 

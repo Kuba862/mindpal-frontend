@@ -1,6 +1,4 @@
-import { editSVG } from './utils.js';
-import { hiddenClass } from './utils.js';
-import { showNotes } from './utils.js';
+import { editSVG, hiddenClass, showNotes, addNewTopButton } from './utils.js';
 
 export const fetchAllNotes = async () => {
   const mainContainer = document.getElementById('main-container');
@@ -48,6 +46,7 @@ export const addNewNote = async () => {
     if (response.status === 200) {
       fetchAllNotes().then(notes => showNotes(notes));
       document.getElementById('new-note-creator').classList.add(hiddenClass);
+      addNewTopButton.classList.remove(hiddenClass);
     }
   return data;
 };
