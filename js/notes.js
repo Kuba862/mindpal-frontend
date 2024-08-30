@@ -2,7 +2,11 @@ import { editSVG } from './utils.js';
 
 export const fetchAllNotes = async () => {
   try {
-    const response = await fetch('http://localhost:5001/api/notes/all-notes');
+    const response = await fetch(`${
+      window.location.origin.includes('.onrender.com')
+        ? 'https://mindpal-backend.onrender.com'
+        : 'http://localhost:5001'
+    }/api/notes/all-notes`);
     const data = await response.json();
 
     const mainContainer = document.getElementById('main-container');
