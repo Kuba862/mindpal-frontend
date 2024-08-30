@@ -3,13 +3,20 @@ import { editSVG } from './utils.js';
 export const addNewNote = async () => {
   const title = document.getElementById('new-note-title').value;
   const content = document.getElementById('new-note-content').value;
-  const response = await fetch('http://localhost:5001/api/notes/add-note', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ title, content }),
-  });
+  const response = await fetch(
+    `${
+      window.location.origin.includes('.onrender.com')
+        ? 'https://mindpal-backend.onrender.com'
+        : 'http://localhost:5001'
+    }/api/notes/add-note`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title, content }),
+    }
+  );
   const data = await response.json();
   if (response.status === 200) {
     window.location.reload();
@@ -20,7 +27,11 @@ export const addNewNote = async () => {
 
 export const updateNote = async (id, title, content) => {
   try {
-    const response = await fetch('http://localhost:5001/api/notes/edit-note', {
+    const response = await fetch(`${
+      window.location.origin.includes('.onrender.com')
+        ? 'https://mindpal-backend.onrender.com'
+        : 'http://localhost:5001'
+    }/api/notes/edit-note`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,7 +42,7 @@ export const updateNote = async (id, title, content) => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    if(response.status === 200) {
+    if (response.status === 200) {
       window.location.reload();
     }
   } catch (error) {
@@ -42,7 +53,11 @@ export const updateNote = async (id, title, content) => {
 export const deleteNote = async (id) => {
   try {
     const response = await fetch(
-      `http://localhost:5001/api/notes/delete-note?id=${id}`,
+      `${
+        window.location.origin.includes('.onrender.com')
+          ? 'https://mindpal-backend.onrender.com'
+          : 'http://localhost:5001'
+      }/api/notes/delete-note?id=${id}`,
       {
         method: 'DELETE',
         headers: {
@@ -57,7 +72,6 @@ export const deleteNote = async (id) => {
     if (response.ok) {
       window.location.reload();
     }
-
   } catch (error) {
     console.error('An error occurred while deleting the note:', error);
   }
