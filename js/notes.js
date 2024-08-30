@@ -1,4 +1,6 @@
 import { editSVG } from './utils.js';
+import { hiddenClass } from './utils.js';
+import { showNotes } from './utils.js';
 
 export const fetchAllNotes = async () => {
   const mainContainer = document.getElementById('main-container');
@@ -12,7 +14,7 @@ export const fetchAllNotes = async () => {
     }/api/notes/all-notes`);
     const data = await response.json();
 
-    data.length !== 0 ? addNewNote.classList.remove('hidden') : mainContainer.classList.remove('hidden');
+    data.length !== 0 ? addNewNote.classList.remove(hiddenClass) : mainContainer.classList.remove(hiddenClass);
 
     return data;
   } catch (error) {
@@ -39,10 +41,10 @@ export const addNewNote = async () => {
     }
   );
   const data = await response.json();
-  if (response.status === 200) {
-    window.location.reload();
-    document.getElementById('new-note-creator').classList.add('hidden');
-  }
+    if (response.status === 200) {
+      fetchAllNotes().then(notes => showNotes(notes));
+      document.getElementById('new-note-creator').classList.add(hiddenClass);
+    }
   return data;
 };
 
@@ -64,7 +66,7 @@ export const updateNote = async (id, title, content) => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     if (response.status === 200) {
-      window.location.reload();
+      fetchAllNotes().then(notes => showNotes(notes));
     }
   } catch (error) {
     console.error('An error occurred while updating the note:', error);
@@ -91,7 +93,8 @@ export const deleteNote = async (id) => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     if (response.ok) {
-      window.location.reload();
+      fetchAllNotes().then(notes => showNotes(notes));
+      document.querySelector('.popup').remove();
     }
   } catch (error) {
     console.error('An error occurred while deleting the note:', error);

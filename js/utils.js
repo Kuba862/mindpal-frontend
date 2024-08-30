@@ -2,7 +2,7 @@ import { fetchAllNotes } from './notes.js';
 
 const main = document.getElementById('main-container');
 const newNoteSection = document.getElementById('new-note-creator');
-const hiddenClass = 'hidden';
+export const hiddenClass = 'hidden';
 const addNewTopButton = document.getElementById('add-new-note');
 
 export const addNewNoteUtil = () => {
@@ -13,7 +13,7 @@ export const addNewNoteUtil = () => {
 
 export const cancelNewNoteUtil = () => {
   newNoteSection.classList.add(hiddenClass);
-  main.classList.remove(hiddenClass);
+  main.classList.add(hiddenClass);
   const notes = fetchAllNotes();
   if (!notes) {
     main.classList.add(hiddenClass);
@@ -83,7 +83,6 @@ export const showNotes = (notes) => {
 
       return noteElement;
     })
-    .forEach((noteElement) => notesContainer.appendChild(noteElement));
 };
 
 // dynamic delete popup creation - reason why I use DOMContentLoaded in app.js
